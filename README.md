@@ -37,6 +37,8 @@ To train our model, simply run:
 python -m torch.distributed.run --nproc_per_node 4 --nnodes 1 --master_port 1234 DEO/main_dino.py --arch swin_t --batch_size 64 --data_split 500000 --local_crops_number 10 --eps 0.05 --output_dir output/[output_dir] --data_path ../pretraining_dataset.h5 --ms_arch --dist_arch dinov3 --dist_arch_size base
 ```
 
+We copress our dataset into the .h5 format, and our dataloader expects such a class. However, adding your own dataset loader can be easily configured in `utils/datasets.py`
+
 ## Evaluation
 
 TODO
