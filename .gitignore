@@ -191,3 +191,5 @@ logs
 attention_maps
 
 .history
+
+*.Identifier
