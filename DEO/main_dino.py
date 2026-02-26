@@ -361,7 +361,6 @@ def train_dino(args):
             f.write(str(vars(args)))
         import shutil
 
-        shutil.copyfile("simdino/main_dino.py", f"{args.output_dir}/main.py")
     print_ = builtins.print
     log_file = Path(args.output_dir, "output.log")
 
@@ -384,7 +383,7 @@ def train_dino(args):
     # ============ setup wandb ============
     if args.nowandb and is_main_process():
         runname = args.output_dir.rstrip("/").split("/")[-1]
-        wandb.init(project="simdino", name=runname)
+        wandb.init(project="", name=runname)
         wandb.config.update(args)
 
     # ============ carbontracker setup ============

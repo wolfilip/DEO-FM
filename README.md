@@ -1,6 +1,6 @@
 # Brewing Stronger Features: Dual-Teacher Distillation for Multispectral Earth Observation (CVPR 2026)
 
-PyTorch implementation and pretrained models for DEO.
+PyTorch implementation and pretrained models for the method DEO, from the paper Brewing Stronger Features: Dual-Teacher Distillation for Multispectral Earth Observation.
 
 <div align="center">
   <image src="assets/splash_image.png" width="600px" />
@@ -12,7 +12,7 @@ Authors: [Filip Wolf](https://www.vicos.si/people/#), [Blaž Rolih](https://www.
 [[`Paper`](https://arxiv.org/abs/2602.19863)] [[`Project Page`](https://wolfilip.github.io/DEO/)] [[`BibTeX`](#citing-deo)]
 
 ## Update
-[26-2-2026] We released pretraining code for DEO.
+[26-2-2026] We release pretraining code for DEO.
 
 ## Pretrained models
 Stay tuned.
@@ -25,16 +25,17 @@ Our implementation requires Python 3.11+, PyTorch 2.4+ and [xFormers](https://gi
 conda env create -f environment.yml
 ```
 
-
 ## Data preparation
 
-TODO
-
+We use a mix of [fMoW-Sentinel](https://arxiv.org/abs/2207.08051) and [fMoW-RGB](https://arxiv.org/abs/1711.07846). Refer to the paper for more details.
 
 ## Training
 
-TODO
+To train our model, simply run:
 
+```shell
+python -m torch.distributed.run --nproc_per_node 4 --nnodes 1 --master_port 1234 DEO/main_dino.py --arch swin_t --batch_size 64 --data_split 500000 --local_crops_number 10 --eps 0.05 --output_dir output/[output_dir] --data_path ../pretraining_dataset.h5 --ms_arch --dist_arch dinov3 --dist_arch_size base
+```
 
 ## Evaluation
 
@@ -42,7 +43,7 @@ TODO
 
 ## Citing DEO
 
-If you find this project useful, please consider giving us a star and citation:
+If you like what we do, please consicer citing us:
 ```
 @article{wolf2026brewing,
   title={Brewing Stronger Features: Dual-Teacher Distillation for Multispectral Earth Observation},

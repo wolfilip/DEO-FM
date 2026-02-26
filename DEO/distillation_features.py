@@ -77,14 +77,14 @@ class DINOvX(nn.Module):
                     "../dinov3",
                     "dinov3_vitl16",
                     source="local",
-                    weights="https://dinov3.llamameta.net/dinov3_vitl16/dinov3_vitl16_pretrain_lvd1689m-8aa4cbdd.pth?Policy=eyJTdGF0ZW1lbnQiOlt7InVuaXF1ZV9oYXNoIjoic2kyb2IzZGszczY5bHp4ZGNpOTluemR6IiwiUmVzb3VyY2UiOiJodHRwczpcL1wvZGlub3YzLmxsYW1hbWV0YS5uZXRcLyoiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NjUzNTc3NjN9fX1dfQ__&Signature=YBPzael33%7EzZ9sIoZkGW1Bd2N5ECBKWi3Ma-cuBZaL8CW2K8ECXUEqmJnhDC7shPzMPX2yReB3l89YmqjZO62Pibk1C6JspMEInZC-5X%7EpQpEUfBnxePlfZFJ10K6D5MljLRAFuWPa2TSti34MGldKRgPrGnhH3SXsgSq4etnL0GS7qZqUaJLQbbIt51TkkSYxEpbzdCFgsCaIh9fcs8iIUJAChMZtIekwrWJHmGe1RIr7315XggYau-ENIj8c5WohU38PzxIFBcMhLDy5Byc-wdaj-0DZu2KlZKEtUuO6UOBS6LzGyUIym%7EO%7EzrkcERPq09KQ-SoB5MVVccFy0iTw__&Key-Pair-Id=K15QRJLYKIFSLZ&Download-Request-ID=3680385942092096",
+                    weights="",
                 )
             elif args.dist_arch_size == "base":
                 self.feat_extr = torch.hub.load(
                     "../dinov3",
                     "dinov3_vitb16",
                     source="local",
-                    weights="https://dinov3.llamameta.net/dinov3_vitb16/dinov3_vitb16_pretrain_lvd1689m-73cec8be.pth?Policy=eyJTdGF0ZW1lbnQiOlt7InVuaXF1ZV9oYXNoIjoibzRiZzBmdnRyZTg2eW9sa3ZhNjIwc2FsIiwiUmVzb3VyY2UiOiJodHRwczpcL1wvZGlub3YzLmxsYW1hbWV0YS5uZXRcLyoiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NjE3Mjg1MTZ9fX1dfQ__&Signature=BsI-fV6AslEW4xLy376VlOmfl-BMJCDCXdUigt5s8RsjTuk14J-yp-hfZYYz8wyb6P19%7EdXaKWAh1sa0p53rJAEK6W4heOIpBsVWbvoF1OnE5VZ8rlrka%7EGCRN%7EH4Ar6j-uFGivv-4U3DxWp7dwoKmxW1LeS2p1FDM3b6O29H5XjPzRyN8D8Yl5VIpu5trLppRcSJo5rMSmPGCXqtQ96W95O5SYQPw-R6qgzLXPAPE4KNetWU9agNHyP9aXsFLiOuRosKCaLQfyCIfobPfN6dUXW1hFuVD487uMObxwPMeXaWvT2vgRM%7EnsiwiwKCiFayYbtiHUdszBdlCfUMeufrQ__&Key-Pair-Id=K15QRJLYKIFSLZ&Download-Request-ID=1158290322926543",
+                    weights="",
                 )
 
         self.feat_extr.eval()
