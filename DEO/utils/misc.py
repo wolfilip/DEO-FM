@@ -780,7 +780,7 @@ def restart_from_checkpoint(ckp_path, run_variables=None, **kwargs):
 
 
 def load_pretrained_weights(
-    model, pretrained_weights, checkpoint_key, model_name, patch_size
+    model, pretrained_weights, checkpoint_key, model_name, patch_size=16
 ):
     if os.path.isfile(pretrained_weights):
         state_dict = torch.load(pretrained_weights, map_location="cpu")

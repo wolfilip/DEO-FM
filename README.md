@@ -12,7 +12,7 @@ Authors: [Filip Wolf](https://www.vicos.si/people/#), [Blaž Rolih](https://www.
 [[`Paper`](https://arxiv.org/abs/2602.19863)] [[`Project Page`](https://wolfilip.github.io/DEO/)] [[`BibTeX`](#citing-deo)]
 
 ## Update
-[3-2-2026] We release pretrained weights for DEO.
+[3-2-2026] We release pretrained weights and weight loading.  
 [26-2-2026] We release pretraining code for DEO.
 
 ## Pretrained models
@@ -39,15 +39,32 @@ To train our model, simply run:
 python -m torch.distributed.run --nproc_per_node 4 --nnodes 1 --master_port 1234 DEO/main_dino.py --arch swin_t --batch_size 64 --data_split 500000 --local_crops_number 10 --eps 0.05 --output_dir output/[output_dir] --data_path ../pretraining_dataset.h5 --ms_arch --dist_arch dinov3 --dist_arch_size base
 ```
 
-We copress our dataset into the .h5 format, and our dataloader expects such a class. However, adding your own dataset loader can be easily configured in `utils/datasets.py`
+We compress our dataset into the .h5 format, and our dataloader expects such a class. However, adding your own dataset loader can be easily configured in `utils/datasets.py`
 
 ## Evaluation
 
-TODO
+To evaluate DEO, simply load features from `DEO_weights.py`.
+
+```shell
+import torch
+
+from DEO_weights import DEO
+
+model = "swin_b"
+path = "/path/to/features/"
+
+model = DEO(model, path, "cuda")
+
+image = torch.randn(1, 3, 256, 256, dtype=torch.float)
+image = image.to("cuda")
+
+features = model(image)
+print([f.shape for f in features])
+```
 
 ## Citing DEO
 
-If you like what we do, please consicer citing us:
+If you like what we do, please consider citing us:
 ```
 @article{wolf2026brewing,
   title={Brewing Stronger Features: Dual-Teacher Distillation for Multispectral Earth Observation},
