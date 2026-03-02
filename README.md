@@ -43,7 +43,7 @@ We compress our dataset into the .h5 format, and our dataloader expects such a c
 
 ## Evaluation
 
-To evaluate DEO, simply load features from `DEO_weights.py`.
+To evaluate DEO, simply load features from `DEO_weights.py`. The model takes as input either 3 channel RGB data or 10 channel S2 multispectral (no 60m atmospheric bands).
 
 ```shell
 import torch
