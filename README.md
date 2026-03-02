@@ -15,7 +15,8 @@ Authors: [Filip Wolf](https://www.vicos.si/people/#), [Blaž Rolih](https://www.
 [26-2-2026] We release pretraining code for DEO.
 
 ## Pretrained models
-Stay tuned.
+
+The Swin-b model used for the results in the paper can be found [`here`](https://unilj-my.sharepoint.com/:f:/g/personal/filip_wolf_fri1_uni-lj_si/IgCsJwuKs8-PQIp706uUiPpsAVkaNsVH5pPLAU_6mYkF22Q?e=nUocgl). ViT-based and larger models are coming soon.
 
 ## Installation
 
