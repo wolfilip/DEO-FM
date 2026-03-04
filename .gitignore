@@ -193,3 +193,6 @@ attention_maps
 .history
 
 *.Identifier
+
+output/
+wandb/

@@ -26,7 +26,8 @@ import torch.backends.cudnn as cudnn
 import torch.distributed as dist
 import torch.nn as nn
 import vision_transformer as vits
-from carbontracker.tracker import CarbonTracker
+
+# from carbontracker.tracker import CarbonTracker
 from distillation_features import RADIO, DINOvX
 from torchvision import models as torchvision_models
 from utils.augmentations import DataAugmentationDINO, DataAugmentationDINOMS
@@ -85,7 +86,7 @@ def get_distill_bottleneck_dim(dist_arch_size: str) -> int:
         return 768
     if dist_arch_size in {"large", "large_reg"}:
         return 1024
-    return 1024  # TODO: set a default for unknown sizes
+    return 1024
 
 
 torchvision_archs = sorted(
@@ -359,7 +360,6 @@ def train_dino(args):
         with open(Path(args.output_dir, "args.log"), "w") as f:
             f.write(" ".join(sys.argv) + "\n")
             f.write(str(vars(args)))
-        import shutil
 
     print_ = builtins.print
     log_file = Path(args.output_dir, "output.log")
@@ -386,8 +386,8 @@ def train_dino(args):
         wandb.init(project="", name=runname)
         wandb.config.update(args)
 
-    # ============ carbontracker setup ============
-    tracker = CarbonTracker(epochs=args.epochs)
+    # if you want to track energy consumption and estimated carbon emissions
+    # tracker = CarbonTracker(epochs=args.epochs)
 
     # ============ preparing data ... ============
     if args.ms_arch:
@@ -678,7 +678,7 @@ def train_dino(args):
     if is_main_process():
         print("Starting DINO training !")
     for epoch in range(start_epoch, args.epochs):
-        tracker.epoch_start()
+        # tracker.epoch_start()
         data_loader.sampler.set_epoch(epoch)
 
         # ============ training one epoch of DINO ... ============
@@ -725,13 +725,13 @@ def train_dino(args):
         if is_main_process():
             with (Path(args.output_dir) / "log.txt").open("a") as f:
                 f.write(json.dumps(log_stats) + "\n")
-        tracker.epoch_end()
+        # tracker.epoch_end()
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
     if is_main_process():
         print("Training time {}".format(total_time_str))
 
-    tracker.stop()
+    # tracker.stop()
 
 
 def train_one_epoch(
