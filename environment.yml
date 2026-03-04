@@ -1,4 +1,3 @@
-name: simdino_vicos
 channels:
   - anaconda
   - pytorch
@@ -259,4 +258,3 @@ dependencies:
       - xxhash==3.6.0
       - yarl==1.22.0
       - zipp==3.23.0
-prefix: /home/filip/conda/envs/simdino_vicos
