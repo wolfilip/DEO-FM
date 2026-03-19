@@ -3,7 +3,7 @@ import torch
 from DEO_weights import DEO
 
 model = "swin_b"
-path = "/home/filip/pretrained_weights/shortened/swin_bm_ms_fmow_hr_280k_100e_dinov3p34c_rgb_head_dconv_aug.pth"
+path = "/path/to/features/"
 
 model = DEO(model, path, "cuda")
 
