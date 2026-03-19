@@ -8,11 +8,12 @@ dependencies:
   - python=3.12
 
   # PyTorch
-  - pytorch::pytorch::2.5.1=py3.12_cuda12.4_cudnn9.1.0_0
+  - pytorch::pytorch=2.5.1=py3.12_cuda12.4_cudnn9.1.0_0
   - pytorch::pytorch-cuda=12.4
   - pytorch::pytorch-mutex=1.0=cuda
-  - pytorch::torchvision::0.20.1=py312_cu124_0
+  - pytorch::torchvision=0.20.1=py312_cu124_0
   - pytorch::torchaudio=2.5.1
+
 
   # Core ML packages
   - conda-forge::timm
