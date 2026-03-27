@@ -44,14 +44,14 @@ We compress our dataset into the .h5 format, and our dataloader expects such a c
 
 ## Evaluation
 
-To evaluate DEO, simply load features from `DEO_weights.py`. The model takes as input either 3 channel RGB data or 10 channel S2 multispectral (no 60m atmospheric bands).
+To evaluate DEO, simply load features from `DEO_weights.py`. The model takes as input either 3 channel RGB data or 10 channel S2 multispectral (no 60m atmospheric bands). Note: our Swin-b version uses a windows size of [12, 12].
 
 ```shell
 import torch
 
 from DEO_weights import DEO
 
-model = "swin_b"
+model = "swin_b" # or vit_base
 path = "/path/to/features/"
 
 model = DEO(model, path, "cuda")

@@ -2,7 +2,7 @@ import torch
 
 from DEO_weights import DEO
 
-model = "swin_b"
+model = "swin_b"  # or vit_base
 path = "/path/to/features/"
 
 model = DEO(model, path, "cuda")
