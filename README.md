@@ -12,12 +12,13 @@ Authors: [Filip Wolf](https://www.vicos.si/people/#), [Blaž Rolih](https://www.
 [[`Paper`](https://arxiv.org/abs/2602.19863)] [[`Project Page`](https://wolfilip.github.io/DEO/)] [[`BibTeX`](#citing-deo)]
 
 ## Update
-[2-3-2026] We release pretrained weights and weight loading.  
+[27-3-2026] We release pretrained ViT-B weights.
+[2-3-2026] We release pretrained Swin-B weights and weight loading.
 [26-2-2026] We release pretraining code for DEO.
 
 ## Pretrained models
 
-The Swin-b model used for the results in the paper can be found on [`OneDrive`](https://unilj-my.sharepoint.com/:f:/g/personal/filip_wolf_fri1_uni-lj_si/IgCsJwuKs8-PQIp706uUiPpsAVkaNsVH5pPLAU_6mYkF22Q?e=nUocgl) and [`Hugging Face`](https://huggingface.co/SolaireTheSun/DEO). ViT-based and larger models are coming soon.
+The Swin-b and ViT-B models used for the results in the paper can be found on [`OneDrive`](https://unilj-my.sharepoint.com/:f:/g/personal/filip_wolf_fri1_uni-lj_si/IgCsJwuKs8-PQIp706uUiPpsAVkaNsVH5pPLAU_6mYkF22Q?e=nUocgl) and [`Hugging Face`](https://huggingface.co/SolaireTheSun/DEO). Larger models are coming soon.
 
 ## Installation
 
