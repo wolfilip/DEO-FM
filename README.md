@@ -12,10 +12,10 @@ Authors: [Filip Wolf](https://www.vicos.si/people/#), [Blaž Rolih](https://www.
 [[`Paper`](https://arxiv.org/abs/2602.19863)] [[`Project Page`](https://wolfilip.github.io/DEO/)] [[`BibTeX`](#citing-deo)]
 
 ## Update
-[9-4-2026] Our paper got accepted as a Highlight on CVPR 2026.  
-[27-3-2026] We release pretrained ViT-B weights.  
-[2-3-2026] We release pretrained Swin-B weights and weight loading.  
-[26-2-2026] We release pretraining code for DEO.
+[09-04-2026] Our paper got accepted as a Highlight on CVPR 2026.  
+[27-03-2026] We release pretrained ViT-B weights.  
+[02-03-2026] We release pretrained Swin-B weights and weight loading.  
+[26-02-2026] We release pretraining code for DEO.
 
 ## Pretrained models
 
