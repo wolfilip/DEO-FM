@@ -1,4 +1,4 @@
-# Brewing Stronger Features: Dual-Teacher Distillation for Multispectral Earth Observation (CVPR 2026)
+# Brewing Stronger Features: Dual-Teacher Distillation for Multispectral Earth Observation (CVPR 2026 Highlight)
 
 PyTorch implementation and pretrained models for the method DEO, from the paper Brewing Stronger Features: Dual-Teacher Distillation for Multispectral Earth Observation.
 
