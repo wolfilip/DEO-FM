@@ -25,7 +25,8 @@ The Swin-b and ViT-B models used for the results in the paper can be found on [`
 Our implementation requires Python 3.11+, PyTorch 2.4+ and [xFormers](https://github.com/facebookresearch/xformers) 0.0.29+ and some other packages. Note that the code has only been tested with the specified versions and also expects a Linux environment. To setup the dependencies, please install via:
 
 ```sh
-conda env create -f environment.yml
+conda create -n deo_env python=3.12
+python3 -m pip install -r requirements.txt
 ```
 
 ## Data preparation

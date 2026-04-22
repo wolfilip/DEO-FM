@@ -1,0 +1,7 @@
+h5py==3.16.0
+kornia==0.8.2
+numpy==2.4.4
+torch==2.5.1
+torchvision==0.20.1
+xformers==0.0.29
+wandb==0.26.0
