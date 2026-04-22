@@ -1,3 +1,5 @@
+from typing import List
+
 from functools import partial
 
 import torch
@@ -10,9 +12,19 @@ from utils.misc import load_pretrained_weights
 
 
 class PatchEmbed(nn.Module):
-    """Image to Patch Embedding"""
+    """Image-to-patch embedding layer.
 
-    def __init__(self, img_size=256, patch_size=8, in_chans=3, embed_dim=768):
+    Converts an input image tensor into a sequence of patch tokens using a
+    strided convolution.
+    """
+
+    def __init__(
+        self,
+        img_size: int = 256,
+        patch_size: int = 8,
+        in_chans: int = 3,
+        embed_dim: int = 768,
+    ) -> None:
         super().__init__()
         num_patches = (img_size // patch_size) * (img_size // patch_size)
         self.img_size = img_size
@@ -23,15 +35,36 @@ class PatchEmbed(nn.Module):
             in_chans, embed_dim, kernel_size=patch_size, stride=patch_size
         )
 
-    def forward(self, x):
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        """Embed an image tensor into patch tokens.
+
+        Args:
+            x (torch.Tensor): Input tensor of shape (B, C, H, W).
+
+        Returns:
+            torch.Tensor: Patch tokens of shape (B, N, D).
+        """
         B, C, H, W = x.shape
         x = self.proj(x).flatten(2).transpose(1, 2)
         return x
 
 
 class DEO(nn.Module):
+    """Wrapper around a pretrained DEO backbone for feature extraction.
 
-    def __init__(self, model, path, device) -> None:
+    The wrapper builds either a ViT- or Swin-based backbone, creates either
+    RGB and multispectral patch embedding layers, loads pretrained weights, and
+    exposes frozen intermediate features for downstream use.
+    """
+
+    def __init__(self, model: str, path: str, device: torch.device | str) -> None:
+        """Initialize the frozen feature extractor.
+
+        Args:
+            model (str): Backbone name used to resolve the architecture.
+            path (str): Path to the pretrained checkpoint.
+            device (torch.device | str): Device used to place the backbone.
+        """
         super().__init__()
 
         self.patch_size = 8
@@ -89,7 +122,15 @@ class DEO(nn.Module):
         for p in self.feat_extr.parameters():
             p.requires_grad = False
 
-    def prepare_tokens(self, x):
+    def prepare_tokens(self, x: torch.Tensor) -> torch.Tensor:
+        """Prepare ViT tokens for RGB or multispectral input.
+
+        Args:
+            x (torch.Tensor): Input tensor of shape (B, C, H, W).
+
+        Returns:
+            torch.Tensor: Tokenized input with CLS and positional embeddings.
+        """
         B, nc, w, h = x.shape
         if nc == 3:
             x = self.feat_extr.patch_embed_rgb(x)  # patch linear embedding
@@ -105,9 +146,17 @@ class DEO(nn.Module):
 
         return self.feat_extr.pos_drop(x)
 
-    def forward_swin(self, x):
+    def forward_swin(self, x: torch.Tensor) -> List[torch.Tensor]:
+        """Extract intermediate Swin features.
 
-        features = []
+        Args:
+            x (torch.Tensor): Input tensor of shape (B, C, H, W).
+
+        Returns:
+            List[torch.Tensor]: Selected intermediate feature maps.
+        """
+
+        features: List[torch.Tensor] = []
         if x.shape[1] == 10:
             x = self.feat_extr.conv_ms(x)
         else:
@@ -121,7 +170,16 @@ class DEO(nn.Module):
 
         return features
 
-    def forward(self, x):
+    def forward(self, x: torch.Tensor) -> List[torch.Tensor]:
+        """Extract frozen intermediate features from the configured backbone.
+
+        Args:
+            x (torch.Tensor): Input tensor of shape (B, C, H, W) where C is either 3 (RGB) or 10 (multispectral).
+
+        Returns:
+            List[torch.Tensor]: Intermediate features from the ViT or Swin
+            backbone.
+        """
         with torch.no_grad():
             if "swin" in self.model:
                 features = self.forward_swin(x)
