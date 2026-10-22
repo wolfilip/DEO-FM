@@ -69,12 +69,12 @@ print([f.shape for f in features])
 
 If you like what we do, please consider citing us:
 ```
-@article{wolf2026brewing,
-  title={Brewing Stronger Features: Dual-Teacher Distillation for Multispectral Earth Observation},
-  author={Wolf, Filip and Rolih, Blaž and Čehovin Zajc, Luka},
-  journal={arXiv preprint arXiv:2602.19863},
-  year={2026},
-  url={https://arxiv.org/abs/2602.19863}
+@InProceedings{wolf2026brewing,
+    title={Brewing Stronger Features: Dual-Teacher Distillation for Multispectral Earth Observation},
+    author={Wolf, Filip and Rolih, Blaž and Čehovin Zajc, Luka},
+    booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month={June},
+    year={2026}
 }
 ```
 
