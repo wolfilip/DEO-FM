@@ -69,12 +69,13 @@ print([f.shape for f in features])
 
 If you like what we do, please consider citing us:
 ```
-@InProceedings{wolf2026brewing,
-    title={Brewing Stronger Features: Dual-Teacher Distillation for Multispectral Earth Observation},
-    author={Wolf, Filip and Rolih, Blaž and Čehovin Zajc, Luka},
-    booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-    month={June},
-    year={2026}
+@InProceedings{Wolf_2026_CVPR,
+    author    = {Wolf, Filip and Rolih, Bla\v{z} and Zajc, Luka \v{C}ehovin},
+    title     = {Brewing Stronger Features: Dual-Teacher Distillation for Multispectral Earth Observation},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2026},
+    pages     = {27815-27826}
 }
 ```
 
