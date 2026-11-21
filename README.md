@@ -11,7 +11,12 @@ Authors: [Filip Wolf](https://www.vicos.si/people/#), [Blaž Rolih](https://www.
 
 [[`Paper`](https://arxiv.org/abs/2602.19863)] [[`Project Page`](https://wolfilip.github.io/DEO/)] [[`BibTeX`](#citing-deo)]
 
+[![SatML Leaderboard CLS #1](https://img.shields.io/badge/SatML%20Leaderboard-CLS%20%231-gold)](https://research.taylorgeospatial.org/satml-leaderboard/#/leaderboard)
+[![TorchGeo](https://img.shields.io/badge/TorchGeo-DEO-EE4C2C?logo=pytorch&logoColor=white)](https://github.com/torchgeo/torchgeo/blob/main/torchgeo/models/deo.py)
+
 ## Update
+[21-11-2026] DEO ranks **#1** in classification on the [SatML Leaderboard](https://research.taylorgeospatial.org/satml-leaderboard/#/leaderboard).  
+[21-11-2026] DEO is now available in [TorchGeo](https://github.com/torchgeo/torchgeo/blob/main/torchgeo/models/deo.py). See [Using DEO in TorchGeo](#using-deo-in-torchgeo).  
 [09-04-2026] Our paper got accepted as a Highlight on CVPR 2026.  
 [27-03-2026] We release pretrained ViT-B weights.  
 [02-03-2026] We release pretrained Swin-B weights and weight loading.  
@@ -63,6 +68,21 @@ image = image.to("cuda")
 
 features = model(image)
 print([f.shape for f in features])
+```
+
+## Using DEO in TorchGeo
+
+The Swin-B model and pretrained weights are also available in [TorchGeo](https://github.com/torchgeo/torchgeo) (v0.10.1+):
+
+```python
+import torch
+from torchgeo.models import DEO_Weights, deo_base
+
+model = deo_base(weights=DEO_Weights.DEO_SWIN)
+
+image = torch.randn(1, 10, 224, 224)  # 10-band S2 (B4, B3, B2, B5, B6, B7, B8, B8A, B11, B12) or 3-band RGB
+features = model(image)               # last-stage features
+multi_scale = model.forward_features(image)  # features from all stages
 ```
 
 ## Citing DEO
